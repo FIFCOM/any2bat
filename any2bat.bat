@@ -1,5 +1,5 @@
-:: any2bat - ÍòÎï½Ô¿ÉÎªBAT
-:: Build 05/06/2019 - By FIFCOM
+:: any2bat - ä¸‡ç‰©çš†å¯ä¸ºBAT
+:: Build 22/06/2019 - By FIFCOM
 :: https://github.com/FIFCOM/any2bat/
 @echo off
 title any2bat - https://github.com/FIFCOM/any2bat/
@@ -10,7 +10,7 @@ if "%~1" == "" (goto usage)
 echo.
 echo [%time%]  Generating...
 echo.
-set file="%~dpnx1"
+set file=%~dpnx1
 set Ext=%~x1
 if not "%~2" == "" (if "%~2" == "def" (set FileName=FIFCOM_%RANDOM%) else (set FileName=%~2))
 if "%~2" == "" (set FileName=FIFCOM_%RANDOM%)
@@ -32,9 +32,9 @@ echo.>>%file%.bat
 echo echo.%%i^>^>fc>>%file%.bat
 )
 )
-echo %%windir%%\System32\certutil.exe -decode fc ^"%OutPath%\%FileName%%Ext%^" ^>NUL 2^>NUL>>"%file%.bat"
+echo %%windir%%\System32\certutil.exe -decode fc ^"!OutPath!\!FileName!%Ext%^" ^>NUL 2^>NUL>>"%file%.bat"
 echo del fc ^>NUL 2^>NUL >>%file%.bat
-echo start ^"%OutPath%\%FileName%%Ext%^" 2^>NUL>>%file%.bat
+echo start ^"!OutPath!\!FileName!%Ext%^" 2^>NUL>>%file%.bat
 echo exit>>%file%.bat
 del %file%.tmp >NUL 2>NUL
 echo [%time%]  ...Generated,save as %file%.bat
@@ -42,19 +42,19 @@ echo.
 %windir%\System32\cmd.exe
 
 :usage
-echo any2bat - ÍòÎï½Ô¿ÉÎªBAT https://github.com/FIFCOM/any2bat/
+echo any2bat - ä¸‡ç‰©çš†å¯ä¸ºBAT https://github.com/FIFCOM/any2bat/
 echo.
-echo ÓÃ·¨: %~n0 [Òª×ª»»µÄÎÄ¼þ] [Êä³öÎÄ¼þÃû] [Êä³öÂ·¾¶] [Òþ²ØÊä³ö´°¿Ú y/n]
-echo         [Êä³öÎÄ¼þÃû]     bat×ª»»ÎªÎÄ¼þÊ±µÄÎÄ¼þÃû     Ä¬ÈÏÖµ(def): FIFCOM_%%RANDOM%%
-echo         [Êä³öÂ·¾¶]       bat×ª»»ÎªÎÄ¼þÊ±µÄÎÄ¼þ¼Ð     Ä¬ÈÏÖµ(def): %%temp%%
-echo         [Òþ²ØÊä³ö´°¿Ú]   bat×ª»»ÎªÎÄ¼þÊ±ÊÇ·ñÒþ²Ø´°¿Ú Ä¬ÈÏÖµ(def): n
+echo ç”¨æ³•: %~n0 [è¦è½¬æ¢çš„æ–‡ä»¶] [è¾“å‡ºæ–‡ä»¶å] [è¾“å‡ºè·¯å¾„] [éšè—è¾“å‡ºçª—å£ y/n]
+echo         [è¾“å‡ºæ–‡ä»¶å]     batè½¬æ¢ä¸ºæ–‡ä»¶æ—¶çš„æ–‡ä»¶å     é»˜è®¤å€¼(def): FIFCOM_%%RANDOM%%
+echo         [è¾“å‡ºè·¯å¾„]       batè½¬æ¢ä¸ºæ–‡ä»¶æ—¶çš„æ–‡ä»¶å¤¹     é»˜è®¤å€¼(def): %%temp%%
+echo         [éšè—è¾“å‡ºçª—å£]   batè½¬æ¢ä¸ºæ–‡ä»¶æ—¶æ˜¯å¦éšè—çª—å£ é»˜è®¤å€¼(def): n
 echo.
 echo.
-echo Ê¾Àý: 
-echo       %~n0 example.exe                             ^|  Êä³öÎÄ¼þÃûºÍÎÄ¼þ¼ÐÈÎÒâÇÒÏÔÊ¾Êä³ö´°¿Ú
-echo       %~n0 example.exe FIFCOM                      ^|  Êä³öÎÄ¼þ¼ÐÈÎÒâÇÒÏÔÊ¾Êä³ö´°¿Ú
-echo       %~n0 example.exe def C:\FIFCOM\              ^|  Êä³öÎÄ¼þÃûÈÎÒâÇÒÏÔÊ¾Êä³ö´°¿Ú
-echo       %~n0 example.exe FIFCOM C:\FIFCOM\           ^|  Êä³öÎÄ¼þÃûºÍÎÄ¼þ¼Ð×Ô¶¨ÒåÇÒÏÔÊ¾Êä³ö´°¿Ú
-echo       %~n0 example.exe FIFCOM def y                ^|  Êä³öÎÄ¼þÃû×Ô¶¨ÒåÇÒÒþ²ØÊä³ö´°¿Ú
+echo ç¤ºä¾‹: 
+echo       %~n0 example.exe                             ^|  è¾“å‡ºæ–‡ä»¶åå’Œæ–‡ä»¶å¤¹ä»»æ„ä¸”æ˜¾ç¤ºè¾“å‡ºçª—å£
+echo       %~n0 example.exe FIFCOM                      ^|  è¾“å‡ºæ–‡ä»¶å¤¹ä»»æ„ä¸”æ˜¾ç¤ºè¾“å‡ºçª—å£
+echo       %~n0 example.exe def C:\FIFCOM\              ^|  è¾“å‡ºæ–‡ä»¶åä»»æ„ä¸”æ˜¾ç¤ºè¾“å‡ºçª—å£
+echo       %~n0 example.exe FIFCOM C:\FIFCOM\           ^|  è¾“å‡ºæ–‡ä»¶åå’Œæ–‡ä»¶å¤¹è‡ªå®šä¹‰ä¸”æ˜¾ç¤ºè¾“å‡ºçª—å£
+echo       %~n0 example.exe FIFCOM def y                ^|  è¾“å‡ºæ–‡ä»¶åè‡ªå®šä¹‰ä¸”éšè—è¾“å‡ºçª—å£
 echo.
 %windir%\System32\cmd.exe
